@@ -1,0 +1,47 @@
+import type { Metadata } from 'next';
+import './globals.css';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import Chatbot from './components/Chatbot';
+
+export const metadata: Metadata = {
+  title: 'Consulics - Tax & Trucking Services',
+  description: 'Professional tax filing and trucking compliance services for individuals and businesses',
+  keywords: 'tax services, trucking, IFTA, IRP, tax filing, small business',
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://consulics.com',
+    title: 'Consulics - Tax & Trucking Services',
+    description: 'Professional tax and trucking compliance services',
+    images: [
+      {
+        url: 'https://consulics.com/og-image.png',
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+      </head>
+      <body>
+        <Navbar />
+        <main className="min-h-screen">{children}</main>
+        <Footer />
+        <Chatbot />
+      </body>
+    </html>
+  );
+}
