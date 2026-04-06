@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { FiFacebook, FiTwitter, FiLinkedin } from 'react-icons/fi';
+import { FiFacebook, FiTwitter, FiLinkedin, FiYoutube, FiInstagram } from 'react-icons/fi';
 
 export default function Footer() {
   return (
@@ -53,14 +53,20 @@ export default function Footer() {
               &copy; 2026 Consulics. All rights reserved.
             </p>
             <div className="flex space-x-6">
-              <a href="#" className="text-gray-400 hover:text-white transition">
+              <a href="https://www.facebook.com/consulics" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">
                 <FiFacebook size={20} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition">
+              <a href="https://x.com/consulics" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">
                 <FiTwitter size={20} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition">
+              <a href="https://www.linkedin.com/company/consulics" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">
                 <FiLinkedin size={20} />
+              </a>
+              <a href="https://www.youtube.com/@consulics" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">
+                <FiYoutube size={20} />
+              </a>
+              <a href="https://www.instagram.com/consulics2290/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">
+                <FiInstagram size={20} />
               </a>
             </div>
           </div>
