@@ -10,12 +10,13 @@ export default function Navbar() {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <nav className="sticky top-0 z-50 bg-white shadow-md">
+    <nav className="sticky top-0 z-50 bg-primary-900 shadow-soft">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="text-2xl font-bold text-primary-700">
-            Consulics
+          <Link href="/" className="text-2xl font-bold text-white tracking-tight">
+            <span className="text-growth-400">Consu</span>
+            <span className="text-white">lics</span>
           </Link>
 
           {/* Desktop Menu */}
