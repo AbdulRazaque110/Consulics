@@ -87,7 +87,7 @@ export default function TruckingServicesPage() {
       </section>
 
       {/* Trucking Service Categories */}
-      <section className="py-20">
+      {/* <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="grid grid-cols-1 md:grid-cols-2 gap-12"
@@ -133,11 +133,11 @@ export default function TruckingServicesPage() {
             ))}
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* Important Deadlines */}
       <motion.section
-        className="py-20 bg-white"
+        className="py-20 bg-bg-gray-50"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
@@ -173,7 +173,7 @@ export default function TruckingServicesPage() {
         viewport={{ once: true }}
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-center mb-12">Why Choose Our Trucking Services?</h2>
+          <h2 className="text-4xl font-bold text-black text-center mb-12">Why Choose Our Trucking Services?</h2>
 
           <motion.div
             className="grid grid-cols-1 sm:grid-cols-2 gap-8"
