@@ -12,9 +12,11 @@ export async function GET(request: NextRequest) {
       : await AppointmentService.getAppointments();
 
     return NextResponse.json({ appointments });
-  } catch (error) {
-    return NextResponse.json({ error: 'Failed to fetch appointments' }, { status: 500 });
-  }
+  } catch (error: any) {
+  console.error('GET /api/appointments error:', error);
+  return NextResponse.json({ error: 'Failed to fetch appointments' }, { status: 500 });
+}
+
 }
 
 export async function POST(request: NextRequest) {
@@ -32,6 +34,7 @@ export async function POST(request: NextRequest) {
       },
     });
   } catch (error: any) {
-    return NextResponse.json({ error: 'Failed to submit appointment' }, { status: 500 });
-  }
+  console.error('POST /api/appointments error:', error);
+  return NextResponse.json({ error: 'Failed to submit appointment' }, { status: 500 });
+}
 }

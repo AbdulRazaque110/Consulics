@@ -19,6 +19,7 @@ export async function requireAdminToken(token: string | undefined) {
   }
 
   const user = await verifyUserToken(token);
+
   if (!user || user.role !== 'admin') {
     const error = new Error('Unauthorized');
     (error as any).status = 403;

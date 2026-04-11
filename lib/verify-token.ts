@@ -8,6 +8,7 @@ export interface VerifiedUser {
   role: 'admin' | 'user';
   createdAt: Date;
   lastLogin: Date;
+  phone?: string;
 }
 
 const SESSION_COOKIE_NAME = 'session';
@@ -17,7 +18,6 @@ function getTokenFromRequest(request: NextRequest): string | null {
   if (authHeader?.startsWith('Bearer ')) {
     return authHeader.split(' ')[1];
   }
-
   const cookie = request.cookies.get(SESSION_COOKIE_NAME)?.value;
   return cookie || null;
 }
@@ -26,7 +26,7 @@ async function verifyJwt(token: string) {
   try {
     return await adminAuth.verifyIdToken(token);
   } catch (error) {
-    return await adminAuth.verifySessionCookie(token, true);
+    return await adminAuth.verifySessionCookie(token, false);
   }
 }
 
@@ -55,6 +55,7 @@ async function fetchUserDocument(uid: string): Promise<VerifiedUser | null> {
     role: data!.role,
     createdAt: data!.createdAt.toDate(),
     lastLogin: data!.lastLogin.toDate(),
+    phone: data!.phone || '',
   };
 }
 
@@ -79,6 +80,7 @@ export async function verifyUser(request: NextRequest): Promise<VerifiedUser | n
       role: 'user',
       createdAt: new Date(),
       lastLogin: new Date(),
+      phone: decoded.phone_number || '',
     };
   }
 
@@ -93,10 +95,22 @@ export async function verifyUserToken(token: string): Promise<VerifiedUser | nul
   if (!token) return null;
 
   try {
-    const decoded = await verifyJwt(token);
+    let decoded;
+
+    try {
+      decoded = await adminAuth.verifySessionCookie(token, false);
+    } catch (e1) {
+      try {
+        decoded = await adminAuth.verifyIdToken(token);
+      } catch (e2) {
+        return null;
+      }
+    }
+
     if (!decoded?.uid || !decoded?.email) return null;
 
     const existingUser = await fetchUserDocument(decoded.uid);
+
     if (!existingUser) {
       await createUserDocument(decoded.uid, decoded.email, decoded.name || decoded.email, decoded.phone_number || undefined);
       return {
@@ -106,6 +120,7 @@ export async function verifyUserToken(token: string): Promise<VerifiedUser | nul
         role: 'user',
         createdAt: new Date(),
         lastLogin: new Date(),
+        phone: decoded.phone_number || '',
       };
     }
 
