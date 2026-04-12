@@ -56,6 +56,7 @@ export default function RegisterPage() {
 
       <div className="w-full max-w-md">
         <div className="bg-white rounded-lg shadow-2xl p-8">
+          <h1 className="text-3xl font-bold text-center mb-2 text-gray-900">Create Account</h1>
           <div className="flex justify-center  bg-gradient-to-br mb-6">
             <Image src="/logo/1.png" alt="Consulics Logo" width={200} height={180} priority />
           </div>
@@ -71,7 +72,7 @@ export default function RegisterPage() {
                 <input
                   type="text"
                   {...register('firstName', { required: 'First name is required' })}
-                  className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                  className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500 text-gray-900"
                   placeholder="John"
                 />
                 {errors.firstName && <p className="text-red-600 text-xs mt-1">{errors.firstName.message}</p>}
@@ -82,7 +83,7 @@ export default function RegisterPage() {
                 <input
                   type="text"
                   {...register('lastName', { required: 'Last name is required' })}
-                  className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                  className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500 text-gray-900"
                   placeholder="Doe"
                 />
                 {errors.lastName && <p className="text-red-600 text-xs mt-1">{errors.lastName.message}</p>}
@@ -94,7 +95,7 @@ export default function RegisterPage() {
               <input
                 type="email"
                 {...register('email', { required: 'Email is required' })}
-                className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500 text-gray-900"
                 placeholder="john@example.com"
               />
               {errors.email && <p className="text-red-600 text-xs mt-1">{errors.email.message}</p>}
@@ -105,7 +106,7 @@ export default function RegisterPage() {
               <input
                 type="tel"
                 {...register('phone', { required: 'Phone is required' })}
-                className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500 text-gray-900"
                 placeholder="(555) 123-4567"
               />
               {errors.phone && <p className="text-red-600 text-xs mt-1">{errors.phone.message}</p>}
@@ -119,7 +120,7 @@ export default function RegisterPage() {
                   required: 'Password is required',
                   minLength: { value: 8, message: 'Password must be at least 8 characters' },
                 })}
-                className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500 text-gray-900"
                 placeholder="••••••••"
               />
               {errors.password && <p className="text-red-600 text-xs mt-1">{errors.password.message}</p>}
@@ -133,7 +134,7 @@ export default function RegisterPage() {
                   required: 'Please confirm your password',
                   validate: (value) => value === password || 'Passwords do not match',
                 })}
-                className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500 text-gray-900"
                 placeholder="••••••••"
               />
               {errors.confirmPassword && <p className="text-red-600 text-xs mt-1">{errors.confirmPassword.message}</p>}

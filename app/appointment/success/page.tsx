@@ -28,6 +28,12 @@ export default function AppointmentSuccessPage() {
               >
                 Contact Support
               </Link>
+              <Link
+  href="/portal"
+  className="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 bg-transparent px-8 py-4 text-white font-semibold transition hover:bg-white/10"
+>
+  View My Appointments <FiArrowRight />
+</Link>
             </div>
           </div>
         </div>

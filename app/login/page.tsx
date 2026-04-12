@@ -18,25 +18,27 @@ export default function LoginPage() {
   const [serverError, setServerError] = useState<string | null>(null);
 
   const onSubmit = async (data: LoginFormData) => {
-    try {
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
+  try {
+    const response = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData?.error || 'Login failed');
-      }
-
-      toast.success('Logged in successfully!');
-      router.push('/portal');
-    } catch (error: any) {
-      setServerError(error.message);
-      toast.error(error.message || 'Login failed. Please check your credentials.');
+    const responseData = await response.json();
+    
+    if (!response.ok) {
+      throw new Error(responseData?.error || 'Login failed');
     }
-  };
+
+    localStorage.setItem('auth_token', 'logged_in');
+    toast.success('Logged in successfully!');
+    window.location.href = '/portal';
+  } catch (error: any) {
+    setServerError(error.message);
+    toast.error(error.message || 'Login failed. Please check your credentials.');
+  }
+};
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary-700 to-primary-900 flex items-center justify-center py-12 px-4">

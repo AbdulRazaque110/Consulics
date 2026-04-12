@@ -1,15 +1,44 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FiMenu, FiX } from 'react-icons/fi';
+import { useRouter } from 'next/navigation';
+import { FiMenu, FiX, FiUser } from 'react-icons/fi';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userName, setUserName] = useState('');
+  const router = useRouter();
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
+
+  useEffect(() => {
+    const checkSession = async () => {
+      try {
+        const response = await fetch('/api/auth/session');
+        if (response.ok) {
+          const data = await response.json();
+          setIsLoggedIn(true);
+          setUserName(data.user?.name?.split(' ')[0] || 'User');
+        } else {
+          setIsLoggedIn(false);
+        }
+      } catch {
+        setIsLoggedIn(false);
+      }
+    };
+    checkSession();
+  }, []);
+
+  const handleLogout = async () => {
+    await fetch('/api/auth/session', { method: 'DELETE' });
+    localStorage.removeItem('auth_token');
+    setIsLoggedIn(false);
+    router.push('/');
+  };
 
   return (
     <nav className="sticky top-0 z-50 bg-primary-900 shadow-soft">
@@ -50,22 +79,41 @@ export default function Navbar() {
 
           {/* Auth Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <Link
-              href="/login"
-              className="px-4 py-2 text-white border border-white/30 rounded hover:bg-white/10"
-            >
-              Login
-            </Link>
-            <Link
-              href="/register"
-              className="px-4 py-2 bg-primary-700 text-white rounded hover:bg-primary-800"
-            >
-              Register
-            </Link>
+            {isLoggedIn ? (
+              <>
+                <Link
+                  href="/portal"
+                  className="flex items-center gap-2 px-4 py-2 text-white border border-white/30 rounded hover:bg-white/10"
+                >
+                  <FiUser size={16} /> {userName}
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition"
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <Link
+                  href="/login"
+                  className="px-4 py-2 text-white border border-white/30 rounded hover:bg-white/10"
+                >
+                  Login
+                </Link>
+                <Link
+                  href="/register"
+                  className="px-4 py-2 bg-primary-700 text-white rounded hover:bg-primary-800"
+                >
+                  Register
+                </Link>
+              </>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
-          <button className="md:hidden" onClick={toggleMenu}>
+          <button className="md:hidden text-white" onClick={toggleMenu}>
             {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
           </button>
         </div>
@@ -80,20 +128,40 @@ export default function Navbar() {
             <NavLink href="/pricing" onClick={closeMenu}>Pricing</NavLink>
             <NavLink href="/about" onClick={closeMenu}>About</NavLink>
             <div className="pt-4 space-y-2">
-              <Link
-                href="/login"
-                onClick={closeMenu}
-                className="block px-4 py-2 text-white border border-white/30 rounded text-center hover:bg-white/10"
-              >
-                Login
-              </Link>
-              <Link
-                href="/register"
-                onClick={closeMenu}
-                className="block px-4 py-2 bg-primary-700 text-white rounded text-center"
-              >
-                Register
-              </Link>
+              {isLoggedIn ? (
+                <>
+                  <Link
+                    href="/portal"
+                    onClick={closeMenu}
+                    className="block px-4 py-2 text-white border border-white/30 rounded text-center hover:bg-white/10"
+                  >
+                    My Portal
+                  </Link>
+                  <button
+                    onClick={handleLogout}
+                    className="block w-full px-4 py-2 bg-red-600 text-white rounded text-center"
+                  >
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link
+                    href="/login"
+                    onClick={closeMenu}
+                    className="block px-4 py-2 text-white border border-white/30 rounded text-center hover:bg-white/10"
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    href="/register"
+                    onClick={closeMenu}
+                    className="block px-4 py-2 bg-primary-700 text-white rounded text-center"
+                  >
+                    Register
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         )}

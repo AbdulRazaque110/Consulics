@@ -218,7 +218,7 @@ export default function AdminDashboard() {
                           onClick={async () => {
                             await fetch('/api/admin/appointments', {
                               method: 'PUT',
-                              headers: { 'Content-Type': 'application/json', Authorization: 'Bearer admin-token' },
+                              headers: { 'Content-Type': 'application/json', Authorization: '' },
                               body: JSON.stringify({ id: appointment.id, status: 'confirmed' }),
                             });
                             fetchStats();
@@ -232,7 +232,7 @@ export default function AdminDashboard() {
                           onClick={async () => {
                             await fetch('/api/admin/appointments', {
                               method: 'PUT',
-                              headers: { 'Content-Type': 'application/json', Authorization: 'Bearer admin-token' },
+                              headers: { 'Content-Type': 'application/json', Authorization: '' },
                               body: JSON.stringify({ id: appointment.id, status: 'rescheduled' }),
                             });
                             fetchStats();
@@ -289,7 +289,7 @@ export default function AdminDashboard() {
                           onClick={async () => {
                             await fetch('/api/admin/leads', {
                               method: 'PUT',
-                              headers: { 'Content-Type': 'application/json', Authorization: 'Bearer admin-token' },
+                              headers: { 'Content-Type': 'application/json', Authorization: '' },
                               body: JSON.stringify({ id: lead.id, status: 'responded' }),
                             });
                             fetchStats();
