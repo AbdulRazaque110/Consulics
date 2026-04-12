@@ -70,7 +70,7 @@ export default function TaxServicesPage() {
             {simpleTaxServices.map((service, index) => (
               <motion.div key={index} variants={itemVariants}>
                 <ServiceCard
-                  icon={service.icon}
+                  // icon={service.icon}
                   title={service.title}
                   description={service.description}
                   showContactButton={true}
