@@ -66,10 +66,17 @@ export default function HomeContent() {
                 Seamless, Trusted Compliance Solutions for Trucking and Taxation Nationwide.
               </p>
               <p className="max-w-2xl text-lg text-slate-300">
-Comprehensive Tax and Compliance Solutions Powered by Industry Leaders Ensuring Secure, Client Focused Service with Unparalleled Expertise and Precision              </p>
+              Comprehensive Tax and Compliance Solutions Powered by Industry Leaders Ensuring Secure, Client Focused Service with Unparalleled Expertise and Precision              </p>
             </div>
 
             <div className="flex flex-col gap-4 sm:flex-row">
+               <Link
+                href="/appointment"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-8 py-4 text-white font-semibold transition hover:bg-white/20"
+              >
+                Book Appointment
+              </Link>
+              
               <Link
                 href="/start-service"
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-orange-500 px-8 py-4 text-white font-semibold shadow-lg shadow-orange-500/30 transition hover:bg-orange-600"
@@ -82,12 +89,7 @@ Comprehensive Tax and Compliance Solutions Powered by Industry Leaders Ensuring 
               >
                 View Tax Services
               </Link>
-              <Link
-                href="/appointment"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-8 py-4 text-white font-semibold transition hover:bg-white/20"
-              >
-                Book Appointment
-              </Link>
+             
             </div>
 
             <div className="grid gap-4 sm:grid-cols-3">

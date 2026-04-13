@@ -56,10 +56,10 @@ export default function ContactPage() {
       />
 
       {/* Header */}
-      <section className="bg-primary-500 text-white py-20">
+      <section className="bg-primary-500 text-white py-7">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl font-bold mb-4 animate-fade-in">Contact Us</h1>
-          <p className="text-xl text-gray-100 animate-slide-up">Get in touch with our team</p>
+          <p className="text-xl text-gray-100 animate-slide-up">Get in touch with us</p>
         </div>
       </section>
 
@@ -68,7 +68,7 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             {/* Phone */}
-            <Card className="hover:scale-105 transition-transform duration-200">
+            {/* <Card className="hover:scale-105 transition-transform duration-200">
               <CardContent className="text-center p-8">
                 <div className="text-4xl text-primary-500 mb-4 flex justify-center">
                   <FiPhone />
@@ -77,10 +77,10 @@ export default function ContactPage() {
                 <p className="text-gray-600 mb-4">(555) 123-4567</p>
                 <p className="text-sm text-gray-500">Available Mon-Fri 9am-6pm EST</p>
               </CardContent>
-            </Card>
+            </Card> */}
 
             {/* Email */}
-            <Card className="hover:scale-105 transition-transform duration-200">
+            {/* <Card className="hover:scale-105 transition-transform duration-200">
               <CardContent className="text-center p-8">
                 <div className="text-4xl text-primary-500 mb-4 flex justify-center">
                   <FiMail />
@@ -89,10 +89,10 @@ export default function ContactPage() {
                 <p className="text-gray-600 mb-4">info@consulics.com</p>
                 <p className="text-sm text-gray-500">We respond within 24 hours</p>
               </CardContent>
-            </Card>
+            </Card> */}
 
             {/* Address */}
-            <Card className="hover:scale-105 transition-transform duration-200">
+            {/* <Card className="hover:scale-105 transition-transform duration-200">
               <CardContent className="text-center p-8">
                 <div className="text-4xl text-primary-500 mb-4 flex justify-center">
                   <FiMapPin />
@@ -101,11 +101,11 @@ export default function ContactPage() {
                 <p className="text-gray-600 mb-4">123 Business St, Suite 100<br />New York, NY 10001</p>
                 <p className="text-sm text-gray-500">Visit us by appointment</p>
               </CardContent>
-            </Card>
+            </Card> */}
           </div>
 
           {/* Form and Schedule Section */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="w-full max-w-2xl mx-auto grid gap-5 md:grid-cols-1">
             {/* Contact Form */}
             <Card>
               <CardHeader>
@@ -196,7 +196,7 @@ export default function ContactPage() {
             </Card>
 
             {/* Schedule Section */}
-            <Card>
+            {/* <Card>
               <CardHeader>
                 <CardTitle>Schedule a Consultation</CardTitle>
               </CardHeader>
@@ -214,7 +214,7 @@ export default function ContactPage() {
                   </Button>
                 </Link>
               </CardContent>
-            </Card>
+            </Card> */}
           </div>
         </div>
       </section>
