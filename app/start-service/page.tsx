@@ -43,6 +43,19 @@ const services = [
   { id: 'irp', label: 'Register IRP', icon: '📋' },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, duration: 0.8 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
 function StartServicePageContent() {
   const searchParams = useSearchParams();
   const selectedService = searchParams.get('type') || 'tax';
@@ -60,11 +73,10 @@ function StartServicePageContent() {
     }
 
     try {
-      // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1500));
       console.log('Form data:', data);
       console.log('Uploaded files:', uploadedFiles);
-      toast.success('Service request submitted! We\'ll contact you within 24 hours.');
+      toast.success("Service request submitted! We'll contact you within 24 hours.");
       setStep(1);
       setUploadedFiles({});
     } catch (error) {
@@ -88,17 +100,22 @@ function StartServicePageContent() {
       <Toaster />
 
       {/* Header */}
-      <section className="bg-primary-700 text-grey py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <motion.section
+        className="bg-primary-700 text-white py-20"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-5xl font-bold mb-4">Get Started</h1>
           <p className="text-xl text-gray-100">Choose your service and complete the form</p>
         </div>
-      </section>
+      </motion.section>
 
       {/* Service Selection */}
       <section className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+          <div className="grid grid-cols-1 text-gray-900 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
             {services.map((service) => (
               <button
                 key={service.id}
@@ -117,128 +134,6 @@ function StartServicePageContent() {
                 {service.label}
               </button>
             ))}
-          </div>
-
-          {/* Form */}
-          <div className="max-w-3xl mx-auto">
-            <form onSubmit={handleSubmit(onSubmit)} className="bg-white rounded-lg shadow-lg p-8">
-              {step === 1 ? (
-                <>
-                  <h2 className="text-2xl text-gray-700 font-bold mb-6">Step 1: Your Information</h2>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">First Name *</label>
-                      <input
-                        type="text"
-                        {...register('firstName', { required: 'First name is required' })}
-                        className="w-full border border-gray-300 text-gray-700 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500"
-                        placeholder="John"
-                      />
-                      {errors.firstName && <p className="text-red-600 text-sm mt-1">{errors.firstName.message}</p>}
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Last Name *</label>
-                      <input
-                        type="text"
-                        {...register('lastName', { required: 'Last name is required' })}
-                        className="w-full border text-gray-700 border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500"
-                        placeholder="Doe"
-                      />
-                      {errors.lastName && <p className="text-red-600 text-sm mt-1">{errors.lastName.message}</p>}
-                    </div>
-                  </div>
-
-                  <div className="mb-6">
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Email *</label>
-                    <input
-                      type="email"
-                      {...register('email', { required: 'Email is required' })}
-                      className="w-full border text-gray-700 border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500"
-                      placeholder="john@example.com"
-                    />
-                    {errors.email && <p className="text-red-600 text-sm mt-1">{errors.email.message}</p>}
-                  </div>
-
-                  <div className="mb-6">
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Phone *</label>
-                    <input
-                      type="tel"
-                      {...register('phone', { required: 'Phone is required' })}
-                      className="w-full border text-gray-700 border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500"
-                      placeholder="(555) 123-4567"
-                    />
-                    {errors.phone && <p className="text-red-600 text-sm mt-1">{errors.phone.message}</p>}
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full bg-primary-700 text-white py-3 rounded font-semibold hover:bg-primary-800 transition"
-                  >
-                    Next: Upload Documents
-                  </button>
-                </>
-              ) : (
-                <>
-                  <h2 className="text-2xl  text-gray-700 font-bold mb-6">Step 2: Upload Documents</h2>
-                  <p className="text-gray-600 mb-6">
-                    Please upload the following documents for {services.find(s => s.id === activeService)?.label}
-                  </p>
-
-                  <div className="space-y-8 mb-8">
-                    {selectedDocs.map((docType) => (
-                      <div key={docType}>
-                        <FileUpload
-                          category={docType}
-                          label={docType}
-                          onFilesSelected={handleFileSelect}
-                        />
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="bg-blue-50 border border-blue-200 rounded p-4 mb-6">
-                    <p className="text-sm text-blue-700">
-                      <strong>Documents uploaded: {getTotalFiles()}</strong>
-                    </p>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Additional Comments</label>
-                    <textarea
-                      {...register('comments')}
-                      rows={4}
-                      className="w-full border text-gray-700 border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500"
-                      placeholder="Any additional information you'd like to share..."
-                    ></textarea>
-                  </div>
-
-                  <div className="flex gap-4 mt-8">
-                    <button
-                      type="button"
-                      onClick={() => setStep(1)}
-                      className="flex-1 border-2 border-primary-700 text-primary-700 py-3 rounded font-semibold hover:bg-primary-50 transition"
-                    >
-                      Back
-                    </button>
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="flex-1 bg-accent-500 text-white py-3 rounded font-semibold hover:bg-accent-600 transition disabled:opacity-50"
-                    >
-                      {isSubmitting ? 'Submitting...' : 'Submit Request'}
-                    </button>
-                  </div>
-                </>
-              )}
-            </form>
-
-            {/* Progress Indicator */}
-            <div className="flex justify-center gap-4 mt-8">
-              <div className={`h-2 w-12 rounded ${step === 1 ? 'bg-primary-700' : 'bg-gray-300'}`}></div>
-              <div className={`h-2 w-12 rounded ${step === 2 ? 'bg-primary-700' : 'bg-gray-300'}`}></div>
-            </div>
           </div>
         </div>
       </section>
@@ -260,34 +155,43 @@ function StartServicePageContent() {
 
           <motion.div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8, staggerChildren: 0.1 }}
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
           >
-            {businessTypeCards.map((card, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-              >
-                <ServiceCard
-                  icon={card.icon}
-                  title={card.title}
-                  description={card.description}
-                  showContactButton={false}
-                />
-              </motion.div>
-            ))}
+            {businessTypeCards.map((card, index) => {
+              // Dynamic button text per card
+              let buttonText = 'Get started →';
+              if (card.title === 'EIN (Employer Identification Number)') buttonText = 'Get yours now →';
+              if (card.title === 'Sole Proprietorship') buttonText = 'Start today →';
+              if (card.title === 'LLC (Limited Liability Company)') buttonText = 'Register now →';
+              if (card.title === 'S Corp') buttonText = 'File today →';
+              if (card.title === 'C Corp') buttonText = 'Incorporate now →';
+              if (card.title === 'Trucking Setup') buttonText = 'Get started →';
+
+              return (
+                <motion.div key={index} variants={itemVariants}>
+                  <ServiceCard
+                    title={card.title}
+                    description={card.description}
+                    showContactButton={true}
+                    contactButtonText={buttonText}
+                    contactButtonHref="/contact"
+                  />
+                </motion.div>
+              );
+            })}
           </motion.div>
         </div>
       </section>
 
+      {/* Video Section */}
       <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-[#040C33] mb-4">Use this space for a video clip or YouTube clip</h2>
+          <h2 className="text-3xl font-bold text-[#040C33] mb-4">
+            Use this space for a video clip or YouTube clip
+          </h2>
           <div className="mx-auto max-w-4xl rounded-[2rem] border border-gray-200 bg-slate-950/5 p-8">
             <div className="aspect-video rounded-[1.5rem] bg-slate-900/80 flex items-center justify-center text-slate-400">
               Video placeholder
@@ -301,7 +205,13 @@ function StartServicePageContent() {
 
 export default function StartServicePage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-gray-50 flex items-center justify-center">Loading...</div>}>
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+          Loading...
+        </div>
+      }
+    >
       <StartServicePageContent />
     </Suspense>
   );
@@ -309,32 +219,26 @@ export default function StartServicePage() {
 
 const businessTypeCards = [
   {
-    icon: '🔢',
     title: 'EIN (Employer Identification Number)',
     description: 'An EIN is a unique identifier for businesses, used to file taxes and manage employee payroll.',
   },
   {
-    icon: '👤',
     title: 'Sole Proprietorship',
     description: 'A business owned and operated by one person with simplicity but personal liability risks.',
   },
   {
-    icon: '🏢',
     title: 'LLC (Limited Liability Company)',
     description: 'Provides liability protection with flexible tax options.',
   },
   {
-    icon: '📊',
     title: 'S Corp',
     description: 'Allows income pass-through taxation while offering limited liability protection.',
   },
   {
-    icon: '🏛️',
     title: 'C Corp',
     description: 'Separate legal entity taxed independently from shareholders.',
   },
   {
-    icon: '🚛',
     title: 'Trucking Setup',
     description: 'Registering, licensing, and compliance setup for trucking businesses.',
   },
