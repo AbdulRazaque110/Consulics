@@ -60,7 +60,7 @@ export default function LoginPage() {
               <input
                 type="email"
                 {...register('email', { required: 'Email is required' })}
-                className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                className="w-full border border-gray-300 text-gray-700 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500"
                 placeholder="john@example.com"
               />
               {errors.email && <p className="text-red-600 text-sm mt-1">{errors.email.message}</p>}
@@ -76,7 +76,7 @@ export default function LoginPage() {
               <input
                 type="password"
                 {...register('password', { required: 'Password is required' })}
-                className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                className="w-full border text-gray-700 border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500"
                 placeholder="••••••••"
               />
               {errors.password && <p className="text-red-600 text-sm mt-1">{errors.password.message}</p>}
@@ -100,7 +100,7 @@ export default function LoginPage() {
             </div>
           </div>
 
-          <button className="w-full border border-gray-300 rounded px-4 py-2 text-center hover:bg-gray-50 transition">
+          <button className="w-full border border-gray-300 text-gray-700 rounded px-4 py-2 text-center hover:bg-gray-50 transition">
             Google
           </button>
 
