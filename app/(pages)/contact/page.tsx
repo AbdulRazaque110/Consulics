@@ -105,8 +105,7 @@ export default function ContactPage() {
           </div>
 
           {/* Form and Schedule Section */}
-          <div className="w-full max-w-2xl mx-auto grid gap-5 md:grid-cols-1">
-            {/* Contact Form */}
+<div className="w-full max-w-6xl mx-auto grid gap-8 md:grid-cols-1 lg:grid-cols-2 items-start">            {/* Contact Form */}
             <Card>
               <CardHeader>
                 <CardTitle>Send us a Message</CardTitle>
@@ -196,8 +195,7 @@ export default function ContactPage() {
             </Card>
 
             {/* Schedule Section */}
-            {/* <Card>
-              <CardHeader>
+<Card className="flex flex-col h-full">              <CardHeader>
                 <CardTitle>Schedule a Consultation</CardTitle>
               </CardHeader>
               <CardContent>
@@ -214,7 +212,7 @@ export default function ContactPage() {
                   </Button>
                 </Link>
               </CardContent>
-            </Card> */}
+            </Card>
           </div>
         </div>
       </section>
