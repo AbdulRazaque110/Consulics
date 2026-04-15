@@ -181,7 +181,7 @@ function StartServicePageContent() {
                 </>
               ) : (
                 <>
-                  <h2 className="text-2xl font-bold mb-6">Step 2: Upload Documents</h2>
+                  <h2 className="text-2xl  text-gray-700 font-bold mb-6">Step 2: Upload Documents</h2>
                   <p className="text-gray-600 mb-6">
                     Please upload the following documents for {services.find(s => s.id === activeService)?.label}
                   </p>
