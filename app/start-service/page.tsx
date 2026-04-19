@@ -34,6 +34,22 @@ const documentCategories = {
     'County Tax Documents',
     'Other',
   ],
+  ifta: [
+    'Fuel Purchase Receipts',
+    'Trip Sheets/Logs',
+    'Vehicle Mileage Records',
+    'Previous IFTA Reports',
+    'Fuel Tax Permits',
+    'Other IFTA Documents',
+  ],
+  irp: [
+    'Vehicle Registration Documents',
+    'Proof of Insurance',
+    'Lease Agreements (if applicable)',
+    'Weight Receipts',
+    'Previous IRP Registration',
+    'Other IRP Documents',
+  ],
 };
 
 const services = [
@@ -302,7 +318,6 @@ function StartServicePageContent() {
             viewport={{ once: true }}
           >
             {businessTypeCards.map((card, index) => {
-              // Dynamic button text per card
               let buttonText = 'Get started →';
               if (card.title === 'EIN (Employer Identification Number)') buttonText = 'Get yours now →';
               if (card.title === 'Sole Proprietorship') buttonText = 'Start today →';
@@ -361,7 +376,7 @@ export default function StartServicePage() {
 const businessTypeCards = [
   {
     title: 'EIN (Employer Identification Number)',
-    description: 'An EIN is a unique identifier for businesses, used to file taxes and manage employee payroll.',
+    description: 'A unique identifier for businesses, used to file taxes and manage employee payroll.',
   },
   {
     title: 'Sole Proprietorship',
