@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer className="bg-gray-900 text-white py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mb-8">
           {/* Company Info */}
           <div>
             <h3 className="text-2xl font-bold mb-4">Consulics</h3>
@@ -25,13 +25,32 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Resources */}
+          {/* Resources Column 1 */}
           <div>
             <h4 className="text-lg font-semibold mb-4">Resources</h4>
             <ul className="space-y-2 text-gray-400 text-sm">
-              <li><Link href="/resources" className="hover:text-white transition">Guides</Link></li>
-              <li><Link href="/blog" className="hover:text-white transition">Blog</Link></li>
-              <li><Link href="/faq" className="hover:text-white transition">FAQ</Link></li>
+              <li><Link href="/resources/hvut-2290" className="hover:text-white transition">HVUT 2290</Link></li>
+              <li><Link href="/resources/ifta" className="hover:text-white transition">IFTA</Link></li>
+              <li><Link href="/resources/irp" className="hover:text-white transition">IRP</Link></li>
+              <li><Link href="/resources/apportioned-plates" className="hover:text-white transition">Apportioned Plates</Link></li>
+              <li><Link href="/resources/for-hire-tags" className="hover:text-white transition">For-Hire Tags</Link></li>
+              <li><Link href="/resources/motor-carrier-services" className="hover:text-white transition">Motor Carrier Services</Link></li>
+              <li><Link href="/resources/operating-authority" className="hover:text-white transition">Operating Authority</Link></li>
+              <li><Link href="/resources/overload-trip-permits" className="hover:text-white transition">Overload Trip Permits</Link></li>
+            </ul>
+          </div>
+
+          {/* Resources Column 2 */}
+          <div>
+            <h4 className="text-lg font-semibold mb-4 opacity-0">-</h4>
+            <ul className="space-y-2 text-gray-400 text-sm">
+              <li><Link href="/resources/ifta-irp-trip-permits" className="hover:text-white transition">IFTA & IRP Trip Permits</Link></li>
+              <li><Link href="/resources/heavy-highway-tax" className="hover:text-white transition">Heavy Highway Tax</Link></li>
+              <li><Link href="/resources/cdl" className="hover:text-white transition">CDL License</Link></li>
+              <li><Link href="/resources/dmv-motor-carrier" className="hover:text-white transition">DMV Motor Carrier</Link></li>
+              <li><Link href="/resources/usdot" className="hover:text-white transition">USDOT</Link></li>
+              <li><Link href="/resources/fmcsa" className="hover:text-white transition">FMCSA</Link></li>
+              <li><Link href="/resources/prism" className="hover:text-white transition">PRISM</Link></li>
               <li><Link href="/privacy" className="hover:text-white transition">Privacy Policy</Link></li>
               <li><Link href="/terms" className="hover:text-white transition">Terms of Service</Link></li>
             </ul>

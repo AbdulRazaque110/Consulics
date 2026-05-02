@@ -33,7 +33,12 @@ export default function LoginPage() {
 
       localStorage.setItem('auth_token', 'logged_in');
       toast.success('Logged in successfully!');
-      window.location.href = '/portal';
+      const role = responseData?.user?.role || responseData?.role;
+if (role === 'admin') {
+  window.location.href = '/admin';
+} else {
+  window.location.href = '/portal';
+}
     } catch (error: any) {
       setServerError(error.message);
       toast.error(error.message || 'Login failed. Please check your credentials.');
