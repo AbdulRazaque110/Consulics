@@ -218,30 +218,6 @@ export default function AdminDashboard() {
           </Card>
         </div>
 
-        {/* Quick Actions */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <Card>
-            <CardHeader><CardTitle>Services</CardTitle></CardHeader>
-            <CardContent>
-              <p className="text-gray-600 mb-4">Manage your service offerings</p>
-              <Button className="w-full">Manage Services</Button>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader><CardTitle>Projects</CardTitle></CardHeader>
-            <CardContent>
-              <p className="text-gray-600 mb-4">Showcase your completed work</p>
-              <Button variant="secondary" className="w-full">Manage Projects</Button>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader><CardTitle>Leads</CardTitle></CardHeader>
-            <CardContent>
-              <p className="text-gray-600 mb-4">Review and respond to inquiries</p>
-              <Button variant="growth" className="w-full">View Leads</Button>
-            </CardContent>
-          </Card>
-        </div>
 
         <div className="mt-10 grid gap-6 lg:grid-cols-2">
           {/* Recent Appointments */}

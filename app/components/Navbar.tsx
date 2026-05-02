@@ -56,22 +56,9 @@ export default function Navbar() {
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-1">
             <NavLink href="/">Home</NavLink>
-            <NavLink href="/services/tax" >Tax Services</NavLink>
-            {/* <NavDropdown href="/services/tax" title="Tax Services">
-              <NavDropdownItem href="/services/tax">Individual Tax Filing</NavDropdownItem>
-              <NavDropdownItem href="/services/tax">Small Business Taxes</NavDropdownItem>
-              <NavDropdownItem href="/services/tax">Self-Employed Taxes</NavDropdownItem>
-              <NavDropdownItem href="/services/tax">Additional Services</NavDropdownItem>
-            </NavDropdown> */}
-
-            <NavLink  href="/services/trucking" >Trucking Services</NavLink>
-            {/* <NavDropdown href="/services/trucking" title="Trucking Services">
-              <NavDropdownItem href="/services/trucking">Company Setup</NavDropdownItem>
-              <NavDropdownItem href="/services/trucking">IFTA Services</NavDropdownItem>
-              <NavDropdownItem href="/services/trucking">IRP Services</NavDropdownItem>
-              <NavDropdownItem href="/services/trucking">Compliance</NavDropdownItem>
-            </NavDropdown> */}
-
+            <NavLink href="/services/tax">Tax Services</NavLink>
+            <NavLink href="/services/trucking">Trucking Services</NavLink>
+            <NavLink href="/form-2290">Form 2290</NavLink>
             <NavLink href="/industries">Industries</NavLink>
             <NavLink href="/contact">Contact Us</NavLink>
             <NavLink href="/about">About</NavLink>
@@ -124,6 +111,7 @@ export default function Navbar() {
             <NavLink href="/" onClick={closeMenu}>Home</NavLink>
             <NavLink href="/services/tax" onClick={closeMenu}>Tax Services</NavLink>
             <NavLink href="/services/trucking" onClick={closeMenu}>Trucking Services</NavLink>
+            <NavLink href="/form-2290" onClick={closeMenu}>Form 2290</NavLink>
             <NavLink href="/industries" onClick={closeMenu}>Industries</NavLink>
             <NavLink href="/pricing" onClick={closeMenu}>Pricing</NavLink>
             <NavLink href="/about" onClick={closeMenu}>About</NavLink>
