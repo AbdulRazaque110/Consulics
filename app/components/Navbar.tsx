@@ -65,7 +65,7 @@ export default function Navbar() {
           </div>
 
           {/* Auth Buttons */}
-          <div className="hidden md:flex items-center space-x-4">
+          {/* <div className="hidden md:flex items-center space-x-4">
             {isLoggedIn ? (
               <>
                 <Link
@@ -97,7 +97,7 @@ export default function Navbar() {
                 </Link>
               </>
             )}
-          </div>
+          </div> */}
 
           {/* Mobile Menu Button */}
           <button className="md:hidden text-white" onClick={toggleMenu}>
